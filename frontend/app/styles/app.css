@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #e6e6e6;
+}
+
+header {
+  min-height: 400px;
+  background-color: #282C34;
+  color: #383838;
+}
+
+.bg-dark {
+  background-color: #282C34 !important;
+}
+
+.top-container {
+  padding: 100px 50px;
+  font-size: 40px;
+  color: #e6e6e6;
+  font-weight: bold;
+}
+
+.top-container>h2 {
+  margin: 30px;
+}
+
+main {
+  padding: 30px;
+}
+
+.block_exercise {
+  display: flex;
+  text-align: center;
+}
+
+.btn {
+  width: 100%;
+}
+
+.btn-secondary {
+  color: white;
+  background-color: #282C34;
+}
+
+.block {
+  padding: 12px;
+  color: #383838;
+  width: 50%;
+}
+
+.list-exercise {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ember-view {}
+
+.card {
+  width: 100%;
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+
+.game-block {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.card-block {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.card-block>button {
+  width: 50px;
+}
+
+.game-block {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.game-quess-block {
+  display: flex;
+  max-width: 900px;
+  justify-content: space-between;
+
+  margin: 0 auto;
+
+}
+
+.block-with-btn {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.block-with-btn>button {
+  width: 30%;
+}
+
+.quess-block {
+  padding: 20px;
+}
+
+.title-admin {
+  text-align: center;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+.title-admin {
+  text-transform: uppercase;
+}
+
+.block>p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

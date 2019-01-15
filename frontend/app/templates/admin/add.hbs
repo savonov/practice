@@ -1,0 +1,26 @@
+<h3 class="title-admin">Add exercise</h3><br>
+
+<form onsubmit={{action "createExercise"}}>
+  <div class="form-group">
+    <label for="nameExercise">Name</label>
+    {{input value=name class="form-control" id="nameExercise"}}
+
+  </div>
+  <div class="form-group">
+    <label for="descriptionExercise">Description</label>
+    {{textarea id="descriptionExercise" value=description cols="73" rows="6"}}
+
+  </div>
+  <div class="form-group">
+    <label for="typeExercise">Type</label>
+
+    <select class="form-control" onchange={{action "setSelection" value="target.value"}}>
+      <option disabled selected> Type exercise </option>
+      {{#each model as |type|}}
+      <option value={{type.id}}>{{type.name}}</option>
+      {{/each}}
+    </select>
+
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

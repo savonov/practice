@@ -1,0 +1,28 @@
+<div class="card ">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">EDIT</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |exercise|}}
+
+        <tr>
+          <th scope="row">{{exercise.id}}</th>
+          <td>{{exercise.name}}</td>
+          <td>{{material-icon "edit"}}</td>
+          <td><button onclick={{action "deleteExercise" exercise}}>
+              {{material-icon "delete"}} </button> </td>
+        </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

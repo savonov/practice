@@ -1,0 +1,28 @@
+<h3 class="title-admin">Admin Panel</h3><br>
+{{#link-to "admin/add" class="btn btn-secondary"}}ADD EXERCISE{{/link-to}}
+<br><br>
+<div class="card ">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>DELETE</th>
+          <th>DETAIL</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |exercise|}}
+        <tr>
+          <th>{{exercise.id}}</th>
+          <td>{{exercise.name}}</td>
+          <td><button class="btn btn-delete" onclick={{action "deleteExercise" exercise}}>{{material-icon "delete"}}</button></td>
+          <td>{{#link-to "admin/detail" exercise.id class="btn btn-detail"}}{{material-icon "info"}}{{/link-to}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</div>

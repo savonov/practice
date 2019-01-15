@@ -1,0 +1,9 @@
+{{#each filter as |exercise|}}
+<div class="card ">
+  <div class="card-body">
+    <h5 class="card-title">{{exercise.name}}</h5>
+    <p class="card-text">{{exercise.description}}</p>
+    {{#link-to "correspondences" exercise.id class="btn btn-secondary"}}Перейти{{/link-to}}
+  </div>
+</div>
+{{/each}}

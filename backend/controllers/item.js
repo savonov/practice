@@ -34,6 +34,7 @@ module.exports = {
     return Item
       .create({
         value: req.body.value,
+        type: req.body.type,
         task_id: req.body.task_id,
       })
       .then((item) => res.status(201).send(item))
@@ -52,6 +53,7 @@ module.exports = {
         return item
           .update({
             value: req.body.value || item.value,
+            type: req.body.type || item.value,
             task_id: req.body.task_id || item.task_id,
           })
           .then(() => res.status(200).send(item))

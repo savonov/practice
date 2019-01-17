@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Exercise = sequelize.define('Exercise', {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    type_exercise: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   }, {});
   Exercise.associate = function (models) {
     Exercise.hasMany(models.Task, {

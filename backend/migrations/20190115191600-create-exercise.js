@@ -14,8 +14,8 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      type_exercise: {
-        type: Sequelize.INTEGER
+      type: {
+        type: Sequelize.STRING
       }
     });
   },

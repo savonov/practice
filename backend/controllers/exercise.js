@@ -54,7 +54,7 @@ module.exports = {
       .create({
         title: req.body.title,
         description: req.body.description,
-        type_exercise: req.body.type_exercise
+        type: req.body.type
       })
       .then((exercise) => res.status(201).send(exercise))
       .catch((error) => res.status(400).send(error));
@@ -65,7 +65,7 @@ module.exports = {
       .create({
         title: req.body.title,
         description: req.body.description,
-        type_exercise: req.body.type_exercise,
+        type: req.body.type,
         tasks: req.body.tasks,
       }, {
         include: [{
@@ -103,7 +103,7 @@ module.exports = {
           .update({
             title: req.body.title || exercise.title,
             description: req.body.description || exercise.description,
-            type_exercise: req.body.type_exercise || exercise.type_exercise,
+            type: req.body.type || exercise.type,
             tasks: req.body.tasks,
           })
           .then(() => res.status(200).send(exercise))

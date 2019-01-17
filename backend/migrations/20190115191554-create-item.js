@@ -11,6 +11,9 @@ module.exports = {
       value: {
         type: Sequelize.STRING
       },
+      type: {
+        type: Sequelize.STRING
+      },
       task_id: {
         type: Sequelize.INTEGER
       }

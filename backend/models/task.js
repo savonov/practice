@@ -1,10 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Task = sequelize.define('Task', {
-    question: DataTypes.STRING,
-    answer: DataTypes.STRING,
-    exercise_id: DataTypes.INTEGER
+    exercise_id: DataTypes.INTEGER,
+    answer_id: DataTypes.INTEGER
   }, {});
-  Task.associate = function (models) {};
+  Task.associate = function (models) {
+    Task.hasMany(models.Item, {
+      foreignKey: 'task_id',
+      as: 'items',
+    })
+
+  };
   return Task;
 };

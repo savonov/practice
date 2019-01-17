@@ -4,24 +4,25 @@ const path = require('path');
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
-const indexRouter = require('./routes/index');
-const exercisesRouter = require('./routes/exercise');
-const taskRouter = require('./routes/task');
-const typeRouter = require('./routes/type');
-
 const app = express();
+
+const indexRouter = require('./routes/index')
+const taskRouter = require('./routes/task')
+const exerciseRouter = require('./routes/exercise')
+const itemRouter = require('./routes/item')
 
 app.use(cors());
 app.use(bodyParser());
 
-app.use('/api/', indexRouter);
-app.use('/api/exercises', exercisesRouter);
-app.use('/api/tasks', taskRouter);
-app.use('/api/types', typeRouter);
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/api/', indexRouter)
+app.use('/api/tasks', taskRouter)
+app.use('/api/exercises', exerciseRouter)
+app.use('/api/items', itemRouter)
 
 app.use(function (req, res, next) {
   next(createError(404));
 });
-
 
 module.exports = app;

@@ -8,22 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      question: {
-        type: Sequelize.STRING
-      },
-      answer: {
-        type: Sequelize.STRING
-      },
       exercise_id: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      answer_id: {
+        type: Sequelize.INTEGER
       }
     });
   },

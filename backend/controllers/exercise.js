@@ -1,5 +1,6 @@
 const Exercise = require('../models').Exercise;
 const Task = require('../models').Task;
+const Item = require('../models').Item;
 
 module.exports = {
   list(req, res) {
@@ -7,67 +8,76 @@ module.exports = {
       .findAll({
         include: [{
           model: Task,
-          as: 'tasks'
+          as: 'tasks',
+          include: {
+            model: Item,
+            as: 'items',
+          }
         }],
-        order: [
-          ['createdAt', 'DESC']
-        ],
         where: [
           req.query
         ]
       })
-      .then((Exercises) => res.status(200).send(Exercises))
+      .then((exercises) => res.status(200).send(exercises))
       .catch((error) => {
         res.status(400).send(error);
       });
   },
 
   getById(req, res) {
-
     return Exercise
       .findById(req.params.id, {
         include: [{
           model: Task,
-          as: 'tasks'
+          as: 'tasks',
+          include: {
+            model: Item,
+            as: 'items',
+          }
         }],
       })
-      .then((Exercise) => {
-        if (!Exercise) {
+      .then((exercise) => {
+        if (!exercise) {
           return res.status(404).send({
             message: 'Exercise Not Found',
           });
         }
-        return res.status(200).send(Exercise);
+        return res.status(200).send(exercise);
       })
       .catch((error) => res.status(400).send(error));
   },
 
   add(req, res) {
-    console.log(req.body)
+    console.log(req.body);
+
     return Exercise
       .create({
-        name: req.body.name,
+        title: req.body.title,
         description: req.body.description,
-        type_id: req.body.type_id
+        type_exercise: req.body.type_exercise
       })
-      .then((Exercise) => res.status(201).send(Exercise))
+      .then((exercise) => res.status(201).send(exercise))
       .catch((error) => res.status(400).send(error));
   },
 
   addWithTasks(req, res) {
     return Exercise
       .create({
-        name: req.body.name,
+        title: req.body.title,
         description: req.body.description,
-        type_id: req.body.type_id,
+        type_exercise: req.body.type_exercise,
         tasks: req.body.tasks,
       }, {
         include: [{
           model: Task,
-          as: 'tasks'
+          as: 'tasks',
+          include: {
+            model: Item,
+            as: 'items',
+          }
         }]
       })
-      .then((Exercise) => res.status(201).send(Exercise))
+      .then((exercise) => res.status(201).send(exercise))
       .catch((error) => res.status(400).send(error));
   },
 
@@ -76,21 +86,27 @@ module.exports = {
       .findById(req.params.id, {
         include: [{
           model: Task,
-          as: 'task'
+          as: 'tasks',
+          include: {
+            model: Item,
+            as: 'items',
+          }
         }],
       })
-      .then(Exercise => {
-        if (!Exercise) {
+      .then(exercise => {
+        if (!exercise) {
           return res.status(404).send({
             message: 'Exercise Not Found',
           });
         }
-        return Exercise
+        return exercise
           .update({
-            name: req.body.name || Exercise.name,
-            description: req.body.description || Exercise.description,
+            title: req.body.title || exercise.title,
+            description: req.body.description || exercise.description,
+            type_exercise: req.body.type_exercise || exercise.type_exercise,
+            tasks: req.body.tasks,
           })
-          .then(() => res.status(200).send(Exercise))
+          .then(() => res.status(200).send(exercise))
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));
@@ -99,13 +115,13 @@ module.exports = {
   delete(req, res) {
     return Exercise
       .findById(req.params.id)
-      .then(Exercise => {
-        if (!Exercise) {
+      .then(exercise => {
+        if (!exercise) {
           return res.status(400).send({
             message: 'Exercise Not Found',
           });
         }
-        return Exercise
+        return exercise
           .destroy()
           .then(() => res.status(204).send())
           .catch((error) => res.status(400).send(error));

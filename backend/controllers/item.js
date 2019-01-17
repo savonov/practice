@@ -1,14 +1,14 @@
-const Type = require('../models').Type;
+const Item = require('../models').Item;
 
 module.exports = {
   list(req, res) {
-    return Type
+    return Item
       .findAll({
         where: [
           req.query
         ]
       })
-      .then((Types) => res.status(200).send(Types))
+      .then((items) => res.status(200).send(items))
       .catch((error) => {
         res.status(400).send(error);
       });
@@ -16,56 +16,60 @@ module.exports = {
 
   getById(req, res) {
 
-    return Type
+    return Item
       .findById(req.params.id, {})
-      .then((Type) => {
-        if (!Type) {
+      .then((item) => {
+        if (!item) {
           return res.status(404).send({
-            message: 'Type Not Found',
+            message: 'item Not Found',
           });
         }
-        return res.status(200).send(Type);
+        return res.status(200).send(item);
       })
       .catch((error) => res.status(400).send(error));
   },
+
   add(req, res) {
-    return Type
+
+    return Item
       .create({
-        name: req.body.name,
+        value: req.body.value,
+        task_id: req.body.task_id,
       })
-      .then((Type) => res.status(201).send(Type))
+      .then((item) => res.status(201).send(item))
       .catch((error) => res.status(400).send(error));
   },
 
   update(req, res) {
-    return Type
-      .findById(req.params.id, {})
-      .then(Type => {
-        if (!Type) {
+    return Item
+      .findById(req.params.id)
+      .then(item => {
+        if (!item) {
           return res.status(404).send({
-            message: 'Type Not Found',
+            message: 'item Not Found',
           });
         }
-        return Type
+        return item
           .update({
-            name: req.body.name || Type.name,
+            value: req.body.value || item.value,
+            task_id: req.body.task_id || item.task_id,
           })
-          .then(() => res.status(200).send(Type))
+          .then(() => res.status(200).send(item))
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));
   },
 
   delete(req, res) {
-    return Type
+    return Item
       .findById(req.params.id)
-      .then(Type => {
-        if (!Type) {
+      .then(item => {
+        if (!item) {
           return res.status(400).send({
-            message: 'Type Not Found',
+            message: 'item Not Found',
           });
         }
-        return Type
+        return Item
           .destroy()
           .then(() => res.status(204).send())
           .catch((error) => res.status(400).send(error));

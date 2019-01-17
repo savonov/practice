@@ -1,76 +1,106 @@
 const Task = require('../models').Task;
+const Item = require('../models').Item;
 
 module.exports = {
   list(req, res) {
+
     return Task
       .findAll({
-
+        include: {
+          model: Item,
+          as: 'items',
+        },
         where: [
           req.query
         ]
       })
-      .then((Tasks) => res.status(200).send(Tasks))
+      .then((tasks) => res.status(200).send(tasks))
       .catch((error) => {
         res.status(400).send(error);
       });
   },
 
   getById(req, res) {
-
     return Task
-      .findById(req.params.id, {})
-      .then((Task) => {
-        if (!Task) {
+      .findById(req.params.id, {
+        include: {
+          model: Item,
+          as: 'items',
+        },
+      })
+      .then((task) => {
+        if (!task) {
           return res.status(404).send({
             message: 'Task Not Found',
           });
         }
-        return res.status(200).send(Task);
+        return res.status(200).send(task);
       })
       .catch((error) => res.status(400).send(error));
   },
+
   add(req, res) {
-    return Type
+    return Task
       .create({
-        question: req.body.question,
-        answer: req.body.answer,
         exercise_id: req.body.exercise_id,
+        answer_id: req.body.answer_id,
       })
-      .then((Type) => res.status(201).send(Type))
+      .then((task) => res.status(201).send(task))
+      .catch((error) => res.status(400).send(error));
+  },
+
+  addWithItems(req, res) {
+    return Task
+      .create({
+        exercise_id: req.body.exercise_id,
+        answer_id: req.body.answer_id,
+        items: req.body.items,
+      }, {
+        include: {
+          model: Item,
+          as: 'items',
+        }
+      })
+      .then((task) => res.status(201).send(task))
       .catch((error) => res.status(400).send(error));
   },
 
   update(req, res) {
-    return Type
-      .findById(req.params.id, {})
-      .then(Type => {
-        if (!Type) {
+    return Task
+      .findById(req.params.id, {
+        include: {
+          model: Item,
+          as: 'items',
+        },
+      })
+      .then(task => {
+        if (!task) {
           return res.status(404).send({
-            message: 'Type Not Found',
+            message: 'Task Not Found',
           });
         }
-        return Type
+        return task
           .update({
-            question: req.body.question || Type.question,
-            answer: req.body.answer || Type.answer,
-            exercise_id: req.body.exercise_id || Type.exercise_id,
+            exercise_id: req.body.exercise_id || task.exercise_id,
+            answer_id: req.body.answer_id || task.answer_id,
+            items: req.body.items,
           })
-          .then(() => res.status(200).send(Type))
+          .then(() => res.status(200).send(task))
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));
   },
 
   delete(req, res) {
-    return Type
+    return Task
       .findById(req.params.id)
-      .then(Type => {
-        if (!Type) {
+      .then(task => {
+        if (!task) {
           return res.status(400).send({
-            message: 'Type Not Found',
+            message: 'Task Not Found',
           });
         }
-        return Type
+        return task
           .destroy()
           .then(() => res.status(204).send())
           .catch((error) => res.status(400).send(error));

@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "savonov",
-    "password": 1,
+    "username": "practice",
+    "password": 123,
     "database": "practice",
     "host": "127.0.0.1",
     "dialect": "postgres",
@@ -10,16 +10,16 @@
     }
   },
   "test": {
-    "username": "savonov",
-    "password": 1,
-    "database": "practice",
+    "username": "root",
+    "password": null,
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "savonov",
-    "password": 1,
-    "database": "practice",
+    "username": "root",
+    "password": null,
+    "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

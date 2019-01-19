@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-export default DS.RESTAdapter.extend({
-  host: 'http://localhost:3000',
-  namespace: 'api'
+export default DS.JSONAPIAdapter.extend({
+    host: 'localhost:3000',
+    namespace: 'api'
 });

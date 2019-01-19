@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  min-height: 400px;
+  /*min-height: 400px;*/
   background-color: #282C34;
   color: #383838;
 }

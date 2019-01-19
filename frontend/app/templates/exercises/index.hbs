@@ -1,0 +1,30 @@
+{{#link-to "exercises.create" class="btn btn-secondary"}}ADD EXERCISE{{/link-to}}
+<br><br>
+<div class="card ">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each exercises as |exercise|}}
+                <tr>
+                    <th>{{exercise.id}}</th>
+                    <td>{{exercise.title}}</td>
+                    <td>{{exercise.type.value}}</td>
+                    <td>
+                        {{#link-to "exercises.view" exercise.id}}{{material-icon "info"}}{{/link-to}}
+                        {{#link-to "exercises.update" exercise.id}}{{material-icon "edit"}}{{/link-to}}
+                        <a href="" onclick={{action "delete" exercise}}>{{material-icon "delete"}}</a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

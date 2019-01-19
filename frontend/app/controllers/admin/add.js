@@ -7,7 +7,7 @@ export default Controller.extend({
         name: this.name,
         description: this.description,
         type_id: this.selectedOption
-      })
+      });
 
       exercise.save()
         .then(() => {

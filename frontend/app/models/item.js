@@ -2,17 +2,16 @@ import DS from 'ember-data';
 import Enum from '../utils/enum'
 
 export default DS.Model.extend({
-    title: DS.attr('string'),
-    description: DS.attr('string'),
+    value: DS.attr('string'),
     type: DS.attr('enum', {
         options: [
-            'matching',
-            'typing'
+            'image',
+            'audio',
+            'text'
         ],
-        value:'matching',
+        value:'text',
         defaultValue(record, options) {
             return Enum.create(options)
         }
     }),
-    tasks: DS.hasMany('task')
 });

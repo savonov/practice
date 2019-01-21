@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Enum from '../utils/enum'
+import { computed } from '@ember/object';
 
 export default DS.Model.extend({
     title: DS.attr('string'),
@@ -14,5 +15,8 @@ export default DS.Model.extend({
             return Enum.create(options)
         }
     }),
-    tasks: DS.hasMany('task')
+    tasks: DS.hasMany('task'),
+
+    //fields for sorting
+
 });

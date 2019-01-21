@@ -53,5 +53,8 @@
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
+  },
+  "dependencies": {
+    "ember-font-awesome": "^4.0.0-rc.4"
   }
 }

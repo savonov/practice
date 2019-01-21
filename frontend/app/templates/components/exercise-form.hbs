@@ -1,4 +1,4 @@
-<form onsubmit={{action 'submitAction'}}>
+<form>
     <div class="form-group">
         <label for="titleExercise">Title</label>
         {{input class="form-control" value=this.exercise.title id="titleExercise"}}
@@ -13,11 +13,11 @@
         <label for="typeExercise">Type</label>
         <select class="form-control" value={{this.exercise.type.value}} onchange={{action (mut this.exercise.type.value)
                                                                                           value="target.value"}}
-                id="typeExercise">
+            id="typeExercise">
             {{#each this.exercise.type.options as |type|}}
-                <option value={{type}}>{{type}}</option>
+            <option value={{type}}>{{type}}</option>
             {{/each}}
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" {{action 'submitAction'}} class="btn btn-primary">Submit</button>
 </form>

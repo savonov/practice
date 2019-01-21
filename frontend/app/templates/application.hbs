@@ -1,18 +1,31 @@
 <div class="body">
   <header>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
-        {{#link-to "exercises" class="navbar-brand" }}EXERCISE{{/link-to}}
-
-        {{#link-to "admin/index" }}Admin{{/link-to}}
+        {{#link-to "index" class="navbar-brand" }}
+        Exercise constructor
+        {{/link-to}}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              {{#link-to "index" class="nav-link" }}
+              Home
+              {{/link-to}}
+            </li>
+            <li class="nav-item">
+              {{#link-to "exercises" class="nav-link" }}
+              Exercises
+              {{/link-to}}
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-    <!--<div class="top-container container">-->
-      <!--<h2>Lorem ipsum dolor.</h2>-->
-      <!--<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h2>-->
-    <!--</div>-->
   </header>
-
   <div class="container">
     <main>
       {{outlet}}

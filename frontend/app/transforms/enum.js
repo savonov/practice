@@ -10,7 +10,7 @@ export default DS.Transform.extend({
     },
 
     serialize(deserialized) {
-        if (deserialized instanceof Enum) {
+        if (typeof(deserialized) === 'instance') {
             return deserialized.get('value');
         } else {
             return deserialized;

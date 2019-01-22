@@ -1,0 +1,14 @@
+{{#each question as |item|}}
+  <div class="card-block">
+    <button class="btn btn-secondary">
+      ←
+    </button>
+    <h5 class="card-question">
+      {{item.value}}
+    </h5>
+  </div>
+{{else}}
+  <div class="list-group-item">
+    No items
+  </div>
+{{/each}}

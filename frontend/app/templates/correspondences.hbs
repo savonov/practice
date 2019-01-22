@@ -1,26 +1,37 @@
 <div class="game-block">
   <div class="card col-lg-5">
     {{#each model as |task|}}
-
-    <div class="card-block ">
-      <h5 class="card-question">{{task.question}}</h5>
-      <button class="btn btn-secondary">&#8594; </button>
-    </div>
+      <div class="card-block">
+        <h5 class="card-question">
+          {{task.question}}
+        </h5>
+        <button class="btn btn-secondary">
+          →
+        </button>
+      </div>
     {{/each}}
   </div>
   <div class="card  col-lg-5">
     {{#each model as |task|}}
-
-    <div class="card-block">
-      <button class="btn btn-secondary"> &#8592; </button>
-      <h5 class="card-question">{{task.answer}}</h5>
-    </div>
+      <div class="card-block">
+        <button class="btn btn-secondary">
+          ←
+        </button>
+        <h5 class="card-question">
+          {{task.answer}}
+        </h5>
+      </div>
     {{/each}}
   </div>
-
 </div>
 <div class="block-with-btn">
-  <button class="btn btn-secondary">Check</button>
-  <button class="btn btn-secondary">Try again</button>
-  <button class="btn btn-secondary">See answers</button>
+  <button class="btn btn-secondary">
+    Check
+  </button>
+  <button class="btn btn-secondary">
+    Try again
+  </button>
+  <button class="btn btn-secondary">
+    See answers
+  </button>
 </div>

@@ -1,12 +1,14 @@
 import Route from '@ember/routing/route';
-import { set } from '@ember/object';
+import {
+  set
+} from '@ember/object';
 
 export default Route.extend({
-    model(){
-        return this.store.findAll('exercise');
-    },
+  model() {
+    return this.store.findAll('exercise');
+  },
 
-    setupController(controller, model){
-        set(controller, 'exercises', model);
-    }
+  setupController(controller, model) {
+    set(controller, 'exercises', model);
+  }
 });

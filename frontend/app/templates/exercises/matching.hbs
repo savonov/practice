@@ -1,0 +1,27 @@
+<h3>
+  Title:
+  {{exercise.title}}
+</h3>
+<div class="game-block">
+  <div class="card col-lg-5">
+    {{#each exercise.tasks as |task|}}
+      {{answer-list item=task.items answer_id=task.answer_id}}
+    {{/each}}
+  </div>
+  <div class="card col-lg-5">
+    {{#each exercise.tasks as |task|}}
+      {{question-list item=task.items answer_id=task.answer_id}}
+    {{/each}}
+  </div>
+</div>
+<div class="block-with-btn">
+  <button class="btn btn-secondary">
+    Check
+  </button>
+  <button class="btn btn-secondary">
+    Try again
+  </button>
+  <button class="btn btn-secondary">
+    See answers
+  </button>
+</div>

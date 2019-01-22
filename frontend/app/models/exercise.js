@@ -9,7 +9,7 @@ export default DS.Model.extend({
             'matching',
             'typing'
         ],
-        value:'matching',
+        value: 'matching',
         defaultValue(record, options) {
             return Enum.create(options)
         }

@@ -2,16 +2,18 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
     actions: {
-        createExercise() {
-            let exercise = this.store.createRecord('exercise', {
-                title: this.exercise.title,
-                description: this.exercise.description,
-                type: this.exercise.type.value
-            });
+        back() {
+            this.exercise.deleteRecord();
+            this.transitionToRoute('exercises');
+        },
 
-            exercise.save()
+        createExercise() {
+            this.exercise.save()
                 .then(() => {
                     this.transitionToRoute('exercises')
+                })
+                .catch((error) => {
+                    console.log(error);
                 })
         }
     }

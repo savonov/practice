@@ -126,3 +126,11 @@ td {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.btn-link {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}

@@ -20,7 +20,7 @@
                     <td>
                         {{#link-to "exercises.view" exercise.id}}{{material-icon "info"}}{{/link-to}}
                         {{#link-to "exercises.update" exercise.id}}{{material-icon "edit"}}{{/link-to}}
-                        <a href="" onclick={{action "delete" exercise}}>{{material-icon "delete"}}</a>
+                        <button class="btn-link" onclick={{action "delete" exercise}}>{{material-icon "delete"}}</button>
                     </td>
                 </tr>
             {{/each}}

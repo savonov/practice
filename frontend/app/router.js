@@ -26,8 +26,6 @@ Router.map(function () {
     this.route('update', {
       path: 'update/:id'
     });
-    this.route('index')
-
     this.route('matching', {
       path: 'matching/:id'
     });

@@ -1,6 +1,9 @@
 # Dependency modules
+node_modules/*
 node_modules/
+node_modules
 
 # Sequelizer configuration
+config/*
 config/
-
+config

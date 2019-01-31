@@ -1,5 +1,14 @@
 const Item = require('../models').Item;
 
+const ItemSerializer = require('../serializers/item');
+
+const JSONAPIDeserializer = require('jsonapi-serializer').Deserializer;
+
+function serialize(data) {
+  // console.log(data);
+  return ItemSerializer.serialize(data);
+}
+
 module.exports = {
   list(req, res) {
     return Item
@@ -8,14 +17,13 @@ module.exports = {
           req.query
         ]
       })
-      .then((items) => res.status(200).send(items))
+      .then((items) => res.status(200).send(serialize(items)))
       .catch((error) => {
         res.status(400).send(error);
       });
   },
 
   getById(req, res) {
-
     return Item
       .findById(req.params.id, {})
       .then((item) => {
@@ -24,21 +32,24 @@ module.exports = {
             message: 'item Not Found',
           });
         }
-        return res.status(200).send(item);
+        return res.status(200).send(serialize(item));
       })
       .catch((error) => res.status(400).send(error));
   },
 
   add(req, res) {
-
-    return Item
-      .create({
-        value: req.body.value,
-        type: req.body.type,
-        task_id: req.body.task_id,
-      })
-      .then((item) => res.status(201).send(item))
-      .catch((error) => res.status(400).send(error));
+    //Debug
+    console.log(req.body);
+    return new JSONAPIDeserializer().deserialize(req.body, (err, body) => {
+      Item
+        .create({
+          title: body.title,
+          value: body.value,
+          type: body.type
+        })
+        .then((item) => res.status(201).send(serialize(item)))
+        .catch((error) => res.status(400).send(error));
+    });
   },
 
   update(req, res) {
@@ -50,14 +61,18 @@ module.exports = {
             message: 'item Not Found',
           });
         }
-        return item
-          .update({
-            value: req.body.value || item.value,
-            type: req.body.type || item.value,
-            task_id: req.body.task_id || item.task_id,
-          })
-          .then(() => res.status(200).send(item))
-          .catch((error) => res.status(400).send(error));
+        //Debug
+        console.log(req.body);
+        new JSONAPIDeserializer().deserialize(req.body, (err, body) => {
+          return item
+            .update({
+              value: req.body.value || item.value,
+              type: req.body.type || item.value,
+              task_id: req.body.task_id || item.task_id,
+            })
+            .then(() => res.status(200).send(serialize(item)))
+            .catch((error) => res.status(400).send(error));
+        });
       })
       .catch((error) => res.status(400).send(error));
   },

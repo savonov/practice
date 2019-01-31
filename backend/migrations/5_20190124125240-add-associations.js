@@ -17,25 +17,25 @@ module.exports = {
         }
       ),
       queryInterface.addColumn(
-        'Tasks',
-        'answer_id',
-        {
-          type: Sequelize.INTEGER,
-          references: {
-            model: 'Items',
-            key: 'id'
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'SET NULL'
-        }
-      ),
-      queryInterface.addColumn(
-        'Items',
+        'TaskHasItems',
         'task_id',
         {
           type: Sequelize.INTEGER,
           references: {
             model: 'Tasks',
+            key: 'id'
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE'
+        }
+      ),
+      queryInterface.addColumn(
+        'TaskHasItems',
+        'item_id',
+        {
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'Items',
             key: 'id'
           },
           onUpdate: 'CASCADE',
@@ -52,12 +52,12 @@ module.exports = {
         'exercise_id'
       ),
       queryInterface.removeColumn(
-        'Items',
+        'TaskHasItems',
         'task_id'
       ),
       queryInterface.removeColumn(
-        'Items',
-        'answer_id'
+        'TaskHasItems',
+        'item_id'
       )
     ]);
   }

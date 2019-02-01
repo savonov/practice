@@ -20,10 +20,11 @@ module.exports = {
           as: 'tasks',
           include: [{
             model: Item,
-            as: 'items'
-          }, {
-            model: Item,
-            as: 'answer'
+            as: 'items',
+            through: {
+              as: 'role',
+              attributes: ['type'],
+            }
           }],
         }],
         where: [
@@ -76,20 +77,20 @@ module.exports = {
   addWithTasks(req, res) {
     console.log(req.body);
     new JSONAPIDeserializer().deserialize(req.body, function (err, body) {
-      console.log(body);
+      console.log(req.body);
       return Exercise
         .create({
-          title: body.title,
-          description: body.description,
-          type: body.type,
-          tasks: body.tasks,
+          title: req.body.title,
+          description: req.body.description,
+          type: req.body.type,
+          tasks: req.body.tasks,
         }, {
           include: [{
             model: Task,
             as: 'tasks',
             include: {
               model: Item,
-              as: 'items',
+              as: 'items'
             }
           }]
         })

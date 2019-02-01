@@ -10,14 +10,10 @@ module.exports = new JSONAPISerializer('exercises', {
   ],
   tasks: {
     ref: 'id',
-    attributes: ['items', 'answer'],
+    attributes: ['items'],
     items: {
       ref: 'id',
-      attributes: ['value', 'type'],
-    },
-    answer: {
-      ref: 'id',
-      attributes: ['value', 'type'],
+      attributes: ['title', 'value', 'type', 'role']
     }
   }
 });

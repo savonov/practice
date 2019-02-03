@@ -1,0 +1,14 @@
+{{#each answer as |item|}}
+<div class="card-block">
+  <button data-item-type='answer' data-task={{id}}>
+    ←
+  </button>
+  <h5 class="card-answer">
+    {{item.value}}
+  </h5>
+</div>
+{{else}}
+<div class="list-group-item">
+  No items
+</div>
+{{/each}}

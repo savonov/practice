@@ -1,27 +1,53 @@
-<h3>
-  Title:
+<div class="matching-block">
+  <div class="top-block">
+  <h4 class="text-left">
   {{exercise.title}}
-</h3>
+</h4>
+<button class="btn-restart" {{action "restart"}} disabled></button>
+</div>
 <div class="game-block">
-  <div class="card col-lg-5">
-    {{#each exercise.tasks as |task|}}
-      {{answer-list item=task.items answer_id=task.answer_id}}
+
+  <div class="card test col-lg-4">
+    {{#each  (shuffle  exercise.tasks ) as |task|}}
+    {{#each (shuffle (filter (action "questionListFilter" task) task.items)) as |item|}}
+
+    <div class="card-block row">
+      <div ><img class="card-question" src="{{item.value}}" alt="{{task.title}}"></div>
+      <button class="button-question"
+       {{action 'selectQuestion' item.id}} id={{item.id}}
+        data-task-id={{item.task_id}}>
+      </button>
+    </div>
+    {{/each}}
     {{/each}}
   </div>
-  <div class="card col-lg-5">
-    {{#each exercise.tasks as |task|}}
-      {{question-list item=task.items answer_id=task.answer_id}}
+  <div class="canvas col-lg-4">
+
+  </div>
+  <div class="card col-lg-4">
+    {{#each  (shuffle exercise.tasks) as |task|}}
+    {{#each (shuffle (filter (action "answerListFilter" task) task.items)) as |item|}}
+    <div class="card-block card-block-answer">
+
+      <button class="button-answer" {{action 'deleteMatch' item.id}}
+      {{action 'selectAnswer' item.id}}  id={{item.id}}
+        data-task-id={{item.task_id }}>
+      </button>
+
+      <h5 class="card-answer"> {{item.value}} </h5>
+    </div>
+    {{/each}}
     {{/each}}
   </div>
+
+</div>
+<div class="feedback">
+   <h5></h5>
+  <button {{action "closeFeedback"}}><img src="/assets/images/cerrar_feedback.png" alt=""></button>
 </div>
 <div class="block-with-btn">
-  <button class="btn btn-secondary">
-    Check
-  </button>
-  <button class="btn btn-secondary">
-    Try again
-  </button>
-  <button class="btn btn-secondary">
-    See answers
-  </button>
+  <button class="btn-match btn-check" {{action 'checkAnswerAndAddMatches'}} disabled> Check </button>
+  <button class="btn-match btn-tryAgain" {{action 'tryAgain'}} disabled> Try again </button>
+  <button class="btn-match btn-seeAnswers" {{action 'seeAnswers'}} disabled> See answers </button>
+</div>
 </div>

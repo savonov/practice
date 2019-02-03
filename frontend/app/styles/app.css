@@ -6,7 +6,6 @@ body {
 }
 
 header {
-  /*min-height: 400px;*/
   background-color: #282C34;
   color: #383838;
 }
@@ -55,54 +54,54 @@ main {
   justify-content: space-between;
 }
 
-.ember-view {}
-
 .card {
   width: 100%;
-  min-width: 250px;
-  margin-bottom: 20px;
-}
-
-.game-block {
-  display: flex;
-  justify-content: space-between;
-
+  max-width: 210px;
+  border: none;
 }
 
 .card-block {
-  padding: 20px;
+  height: 80px;
+  margin: 1px;
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
+  width: 113%;
 }
-
+.card-block-answer{
+  margin-left: -20%;
+}
 .card-block>button {
+  height: 50px;
   width: 50px;
 }
 
 .game-block {
-  max-width: 900px;
+  width: 700px;
   margin: 0 auto;
+  background-color: white;
+  margin-bottom: 16px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
+.col-lg-4{
+  padding: 0;
+  margin: 0;
+}
 .game-quess-block {
   display: flex;
   max-width: 900px;
   justify-content: space-between;
-
   margin: 0 auto;
-
 }
 
 .block-with-btn {
   display: flex;
   justify-content: space-between;
-  max-width: 900px;
+  width: 730px;
   margin: 0 auto;
-}
-
-.block-with-btn>button {
-  width: 30%;
 }
 
 .quess-block {
@@ -133,4 +132,197 @@ td {
   outline: none;
   padding: 0;
   cursor: pointer;
+}
+
+.active-question{
+  background-color: green;
+}
+
+.active-answer{
+  background-color: blue;
+}
+
+.line{
+  background-color: yellow;
+}
+
+canvas{
+  position: absolute;
+  width: 220px;
+  height: 1000px;
+  top: -200px;
+}
+
+img.card-question{
+  height: 94px;
+  width: 159px;
+}
+
+.col-lg-8{
+  padding: 0;
+}
+
+.button-question{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/imgBTfrecha.png);
+  width: 48px !important;
+  height: 48px !important;
+  z-index: 10;
+}
+
+.button-answer{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/imgBTdianaOn.png);
+  width: 48px !important;
+  height: 48px !important;
+  z-index: 10;
+}
+
+.conected-answer{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/imgBTdianaRip.png);
+  width: 48px !important;
+  height: 48px !important;
+  z-index: 10;
+}
+
+.active-question {
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/imgBTfrecha_Sel.png);
+  width: 48px !important;
+  height: 48px !important;
+  z-index: 10;
+}
+
+.connected-question{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/imgBTfrecha_Sel.png);
+  width: 48px !important;
+  height: 48px !important;
+  z-index: 10;
+}
+
+.btn-match{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background: url(/assets/images/button_nav.png);
+  width: 190px;
+  height: 67px;
+  cursor: default;
+  left: 40px;
+  bottom: 48px;
+  z-index: 99;
+}
+
+.card-answer{
+  text-align: left;
+  width: 75%;
+}
+
+.matching-block{
+  background-color: white;
+  width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+
+.top-block{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.btn-restart{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/restart.png);
+  width: 40px !important;
+  height: 40px !important;
+  z-index: 10;
+}
+
+
+button:disabled,
+button[disabled]{
+  color: #ffffff;
+  opacity: .4;
+}
+
+.match-false{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/imgBTfrecha_Sel_ko.png);
+  width: 48px !important;
+  height: 48px !important;
+  z-index: 10;
+}
+
+.match-true{
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-image: url(/assets/images/imgBTfrecha_Sel_ok.png);
+  width: 48px !important;
+  height: 48px !important;
+  z-index: 10;
+}
+
+.button-question:disabled,
+.button-question[disabled],
+.button-answer:disabled,
+.button-answer[disabled]{
+  opacity: 1;
+}
+
+#test{
+  height: 200px;
+  width: 200px;
+
+  background-color: blue;
+}
+
+.feedback{
+  width: 730px;
+  background-color: #A7DCF7;
+  border-radius: 5px;
+  padding: 13px;
+  margin: 0 40px;
+  position: absolute;
+  z-index: 9999;
+  display: none;
+  justify-content: space-between;
+
+}
+.feedback>button{
+  background-color: #A7DCF7;
+  border: none;
+  margin-top: -5px;
+  margin-right: -10px
+}
+
+.feedback>h5{
+  margin-top: 14px;
 }

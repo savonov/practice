@@ -54,9 +54,10 @@ main {
   justify-content: space-between;
 }
 
+/* Bootstrap tag is not editing! */
 .card {
   width: 100%;
-  max-width: 210px;
+  /* max-width: 210px; */
   border: none;
 }
 
@@ -87,8 +88,8 @@ main {
 }
 
 .col-lg-4{
-  padding: 0;
-  margin: 0;
+  /* padding: 0;
+  margin: 0; */
 }
 .game-quess-block {
   display: flex;
@@ -159,7 +160,7 @@ img.card-question{
 }
 
 .col-lg-8{
-  padding: 0;
+  /* padding: 0; */
 }
 
 .button-question{

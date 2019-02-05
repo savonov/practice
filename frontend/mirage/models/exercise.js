@@ -1,5 +1,5 @@
-import { Model, hasMany } from 'ember-cli-mirage';
+import { Model, hasMany } from "ember-cli-mirage";
 
 export default Model.extend({
-    tasks: hasMany('task')
+  tasks: hasMany("task")
 });

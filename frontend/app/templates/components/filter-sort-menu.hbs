@@ -1,0 +1,72 @@
+<div class="row mb-4">
+  <div class="container-fluid menu-field">
+    <ul class='menu'>
+      <li class="dropdown menu-item">
+        <button class="dropbtn">Filter</button>
+        <div class="dropdown-content">
+          <ul class="drop-ul">
+            <form action="">
+              <div class="form-group">
+                <ul class="filter-list">
+                  <li>
+                    <div class="custom-controll custom-checkbox mr-sm-2">
+                      {{input type="checkbox" checked=matching click=(action "addToFilter" "matching") change=(action
+                      "filter" "" "")
+                      class="custom-control-input" id="matching"}}
+                      <label class="custom-control-label" for="matching">Matching</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="custom-controll custom-checkbox mr-sm-2">
+                      {{input type="checkbox" checked=typing click=(action "addToFilter" "texting") change=(action
+                      "filter" "" "")
+                      class="custom-control-input" id="typing"}}
+                      <label class="custom-control-label" for="typing">Typing</label>
+                    </div>
+                  </li>
+                </ul>
+                <hr>
+                <div class="form-goup m-1">
+                  {{input type="text" value=search key-up=(action "filter" "" search) class="form-control
+                  form-control-sm" placeholder="title"}}
+                </div>
+              </div>
+              <li><button type="button" onclick={{action "filterClear"}} class='drop-btn'>clear</button></li>
+            </form>
+          </ul>
+        </div>
+      </li>
+      <li class="dropdown menu-item">
+        <button class="dropbtn">Sort</button>
+        <div class="dropdown-content">
+          <ul class="drop-ul">
+            <form action="">
+              <div class="form-group">
+                <span class="title">Title</span>
+                <li class='drop-item'>
+                  <button {{action 'filter' "title:asc"}} class='btn btn-outline-success w-auto'>UP</button>
+                  <button {{action 'filter' "title:desc"}} class='btn btn-outline-success w-auto'>DOWN</button>
+                </li>
+                <span class="title">Type</span>
+                <li class='drop-item'>
+                  <button {{action 'filter' "type.value:asc"}} class='btn btn-outline-success w-auto'>UP</button>
+                  <button {{action 'filter' "type.value:desc"}} class='btn btn-outline-success w-auto'>DOWN</button>
+                </li>
+              </div>
+              <li><button type="button" onclick={{action "filter" "" ""}} class='drop-btn'>clear</button></li>
+            </form>
+          </ul>
+        </div>
+      </li>
+      <li class="dropdown menu-item float-right">
+        <button class="dropbtn createBtn">
+          {{#link-to "exercises.create" class="text-white align-middle"}}
+          {{fa-icon "plus" class="ml-3 text-white"}} <span class="ml-2">Create</span>
+          {{/link-to}}
+        </button>
+
+      </li>
+    </ul>
+  </div>
+</div>
+{{yield this.results}}

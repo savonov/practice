@@ -1,64 +1,51 @@
-export default function () {
+export default function() {
+  this.namespace = "/api";
 
-    this.namespace = '/api';
+  // this.get("/exercises", (schema,request) => {
+  //   return
+  // });
+  this.get("/exercises", function(schema, request) {
+    let filtered = [];
+    // Type filter
+    if (request.queryParams.type !== undefined) {
+      let types = schema.exercises.all().filter(function(i) {
+        return (
+          i.type
+            .toLowerCase()
+            .indexOf(request.queryParams.type.toLowerCase()) !== -1
+        );
+      });
+      filtered.pushObject(types);
+    }
+    // title filter
+    if (request.queryParams.title !== undefined) {
+      let titles = schema.exercises.all().filter(function(i) {
+        return (
+          i.title
+            .toLowerCase()
+            .indexOf(request.queryParams.title.toLowerCase()) !== -1
+        );
+      });
+      filtered.pushObject(titles);
+    }
 
-    // this.get('/exercises', () => {
-    //     return {
-    //         data: [{
-    //             type: 'exercises',
-    //             id: 1,
-    //             attributes: {
-    //                 title: "exercise_1",
-    //                 type: "match"
-    //             }
-    //         }, {
-    //             type: 'exercises',
-    //             id: 2,
-    //             attributes: {
-    //                 title: "exercise_2",
-    //                 type: "match"
-    //             }
-    //         }]
-    //     };
-    // });
+    if (filtered.length !== 0) {
+      return filtered;
+    } else {
+      return schema.exercises.all();
+    }
+  });
 
-    // this.get('/exercises', () => {
-    //     return {
-    //         data: [{
-    //             type: 'exercises',
-    //             id: 1,
-    //             attributes: {
-    //                 title: "exercise_1",
-    //                 description: "exercise_1 description",
-    //                 type: "match",
-    //                 tasks: [
-    //                     {
-    //
-    //                     }
-    //                 ]
-    //             }
-    //         }, {
-    //             type: 'exercises',
-    //             id: 2,
-    //             attributes: {
-    //                 title: "exercise_2",
-    //                 type: "match"
-    //             }
-    //         }]
-    //     };
-    // });
+  this.get("/exercises/:id");
 
-    this.get('/exercises');
-    this.get('/exercises/:id');
+  this.get("/exercises/:id/tasks", function(schema, request) {
+    const exercise_id = request.params.id;
+    return schema.tasks.where({ exercise_id: exercise_id });
+  });
 
-    this.get('/exercises/:id/tasks', function(schema, request) {
-        const exercise_id = request.params.id;
-        return schema.tasks.where({ exercise_id: exercise_id });
-    });
-
-    this.post('/exercises', function(schema, request) {
-        let attrs = this.normalizedRequestAttrs();
-        /*
+  this.post("/exercises", function(schema, request) {
+    let attrs = this.normalizedRequestAttrs();
+    /*
           attrs = {
             firstName: 'Conan',
             middleName: 'the',
@@ -66,8 +53,8 @@ export default function () {
             teamId: '1'
           }
         */
-        return schema.exercises.create(attrs);
-    });
+    return schema.exercises.create(attrs);
+  });
 
-    this.post('/tasks');
+  this.post("/tasks");
 }

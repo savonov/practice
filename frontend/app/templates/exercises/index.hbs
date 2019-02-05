@@ -1,30 +1,67 @@
+<div class="container">
+  {{#filter-sort-menu filter=(action "filterAction") as |filteredExercises| }}
+  <div class="row justify-content-md-center">
+    {{#each filteredExercises as |exercise|}}
+    <div class="col col-12 col-sm-6 col-md-5 col-lg-4">
+      <div class="card shadow mb-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">{{exercise.title}}</h5>
+          <h6 class="card-title">
+            <a href="" {{action "delete" exercise}}>
+              {{#fa-icon "trash" class="ml-3 text-danger float-right"}}
+              {{/fa-icon}}
+            </a>
+            {{#link-to "exercises.update" exercise.id}}
+            {{fa-icon "pencil" class="ml-3 text-warning float-right"}}
+            {{/link-to}}
+            {{#fa-icon "eye" class="ml-3 text-success float-right"}}
+            {{#bs-tooltip}}
+            <span>Type: {{exercise.type}}</span>
+            <br>
+            <span>Desctiption: {{exercise.description}}</span>
+            {{/bs-tooltip}}
+            {{/fa-icon}}
+          </h6>
+          <p class="card-text">
+            {{moment-format exercise.created_at 'LL'}}
+
+          </p>
+        {{#link-to "exercises.matching" exercise.id class="playLink"}}PLAY{{/link-to}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/filter-sort-menu}}
+</div>
+{{!--
 {{#link-to "exercises.create" class="btn btn-secondary"}}ADD EXERCISE{{/link-to}}
 <br><br>
-<div class="card ">
-    <div class="card-body">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Type</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each exercises as |exercise|}}
-                <tr>
-                    <th>{{exercise.id}}</th>
-                    <td>{{exercise.title}}</td>
-                    <td>{{exercise.type.value}}</td>
-                    <td>
-                        {{#link-to "exercises.view" exercise.id}}{{material-icon "info"}}{{/link-to}}
-                        {{#link-to "exercises.update" exercise.id}}{{material-icon "edit"}}{{/link-to}}
-                        <button class="btn-link" onclick={{action "delete" exercise}}>{{material-icon "delete"}}</button>
-                    </td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</div>
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each exercises as |exercise|}}
+        <tr>
+          <th>{{exercise.id}}</th>
+          <td>{{exercise.title}}</td>
+          <td>{{exercise.type.value}}</td>
+          <td>
+            {{#link-to "exercises.view" exercise.id}}{{material-icon "info"}}{{/link-to}}
+            {{#link-to "exercises.update" exercise.id}}{{material-icon "edit"}}{{/link-to}}
+            <button class="btn-link" onclick={{action "delete" exercise}}>{{material-icon "delete"}}</button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div> --}}

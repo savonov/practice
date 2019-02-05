@@ -14,6 +14,8 @@ module.exports = function(defaults) {
     }
   });
 
+  app.import('app/styles/filter-sort-menu.css');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

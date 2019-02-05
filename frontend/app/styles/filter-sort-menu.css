@@ -1,0 +1,121 @@
+.dropbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px 40px;
+  font-size: 16px;
+  border: none;
+  user-select: none;
+}
+.dropbtn:focus {
+  outline: none;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn:hover {
+  background-color: rgb(55, 139, 58);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* dropdown reqlization */
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+
+.menu-item {
+  float: left;
+}
+
+/* horizontal list */
+
+.menu-field {
+  background: #4caf50;
+  border-radius: 0 0 30px 30px;
+  padding: 0 30px;
+}
+
+/* menu background */
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  padding: 3px;
+  padding-top: 20px;
+  background: white;
+  /* border: 2px solid #4caf50; */
+  border-bottom-left-radius: 30px;
+}
+
+.drop-ul {
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.drop-btn {
+  background: #4caf50;
+  color: white;
+  border: 1px dotted #4caf50;
+  border-bottom-left-radius: 30px;
+  padding: 7px;
+  width: 100%;
+  text-align: center;
+  /* font-weight: bold; */
+  letter-spacing: 3px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+.drop-btn:hover {
+  background: #65db69;
+}
+.drop-btn:focus {
+  outline: none;
+}
+
+.drop-input {
+  border: none;
+  /* border-bottom: 1px solid #4caf50; */
+  padding: 10px 10px 5px 10px;
+}
+.drop-input:focus {
+  outline: none;
+}
+
+.drop-item {
+  text-align: center;
+  border-bottom: 1px solid #4caf50;
+  padding-bottom:10px;
+}
+
+.filter-list {
+  list-style: none;
+  text-align: left;
+}
+
+/* Exercise component */
+.playLink:hover {
+  text-decoration: none;
+}
+
+.dropbtn a:hover {
+  text-decoration: none;
+  color:white;
+}
+.createBtn:hover{
+  background: none;
+}
+.createBtn{
+  padding:16px 0px;
+}

@@ -1,0 +1,7 @@
+<div class="card-block">
+  <div ><img class="card-question" src="{{item.value}}" alt="{{task.title}}"></div>
+  <button class="button-question"
+    {{action 'selectQuestion' item.id}} id={{item.id}}
+    data-task-id={{item.task_id}}>
+  </button>
+</div>

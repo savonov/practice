@@ -103,6 +103,8 @@ main {
   justify-content: space-between;
   width: 730px;
   margin: 0 auto;
+  position: relative;
+  z-index: 99;
 }
 
 .quess-block {

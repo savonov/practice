@@ -15,6 +15,7 @@ module.exports = function(defaults) {
   });
 
   app.import('app/styles/filter-sort-menu.css');
+  app.import('app/styles/typing.css');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

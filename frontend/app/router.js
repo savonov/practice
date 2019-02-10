@@ -29,7 +29,12 @@ Router.map(function () {
     this.route('matching', {
       path: 'matching/:id'
     });
+    this.route('typing',{
+      path: 'typing/:id'
+    });
   });
+
+  this.route('exercise', function() {});
 });
 
 export default Router;

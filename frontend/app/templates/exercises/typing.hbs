@@ -1,0 +1,49 @@
+<div class="container ">
+  <div class="card typingGround shadow ">
+    <div class="card-body">
+      <h2 class="card-title custom-title shadow">{{exercise.title}}</h2>
+
+
+      <div class="row justify-content-center">
+        {{#each exercise.tasks as |task|}}
+        <div class="card" style="width: 18rem;">
+          {{#each task.items as |item|}}
+          {{#if (eq item.type "image")}}
+          <img src="{{item.value}}" class="card-img-top" alt="Emptiness">
+          {{/if}}
+          {{#if (eq item.type "text")}}
+
+          <div class="card-body text-center">
+            {{!-- <h6>answer: {{item.value}}</h6> --}}
+            <span class="{{item.id}}-beginning">b</span>
+            <input type="text" maxlength="1" oninput={{action "addToAnswers" item}} class="emptyPart answer {{item.id}}-answer">
+            <span class="{{item.id}}-end">e</span>
+            {{compute (action "brokeAWord") item.value item.id}}
+            <span class="correctness" id="{{item.id}}-{{item.value}}"></span>
+            <span id="{{item.id}}-response_wrong" class="normalize-icon d-none float-right response">{{material-icon
+              "close" class="text-danger"}}</span>
+            <span id="{{item.id}}-response_right" class="normalize-icon d-none float-right response">{{material-icon
+              "done" class="text-success"}}</span>
+          </div>
+          {{/if}}
+          {{#if (eq item.type "audio")}}
+          <audio controls preload="true">
+            <source src="{{item.value}}">
+          </audio>
+          {{/if}}
+          {{/each}}
+        </div>
+        {{/each}}
+        {{compute (action "loadAnswers")}}
+      </div>
+    </div>
+    <div class="row clear">
+      <div class="bar">
+        <div class="control-panel">
+          <button onclick={{action "check"}} class="dropbtn c-pointer">CHECK</button>
+          <button onclick={{action "clear"}} class="dropbtn c-pointer float-right">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

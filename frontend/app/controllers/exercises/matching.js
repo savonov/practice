@@ -54,7 +54,7 @@ export default Controller.extend({
 
   }
   },
-  checkCountMatch(){
+  checkCountMatches(){
     if ($('canvas').length > 0) {
       $('.btn-check').prop('disabled', false);
     } else {
@@ -115,7 +115,7 @@ export default Controller.extend({
     $('.active-question').addClass('connected-question');
     $('.connected-question').removeClass('active-question').prop('disabled', true);
 
-    this.checkCountMatch();
+    this.checkCountMatches();
 
 
   },
@@ -188,7 +188,7 @@ export default Controller.extend({
           $(`#${answerId}`).removeClass('conected-answer');
         });
 
-        this.checkCountMatch();
+        this.checkCountMatches();
 
       }
     },

@@ -1,0 +1,30 @@
+{{#link-to "items.create" class="btn btn-secondary"}}ADD ITEM{{/link-to}}
+<br><br>
+<div class="card ">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each items as |item|}}
+        <tr>
+          <th>{{item.id}}</th>
+          <td>{{item.title}}</td>
+          <td>{{item.type.value}}</td>
+          <td>
+            {{#link-to "items.view" item.id}}{{material-icon "info"}}{{/link-to}}
+            {{#link-to "items.update" item.id}}{{material-icon "edit"}}{{/link-to}}
+            <button class="btn-link" onclick={{action "delete" item}}>{{material-icon "delete"}}</button>
+          </td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

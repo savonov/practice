@@ -7,7 +7,7 @@ export default Route.extend({
   model(params) {
     return {
       "id": 1,
-      "title": "Input right answers",
+      "title": "Input missed letters",
       "description": "Description Exercise",
       "type": "texting",
       "tasks": [

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 .typingGround {
   background: white;
   border-bottom-left-radius: 30px;
@@ -20,8 +22,8 @@
 }
 .bar {
   width: 100%;
-  background: #4caf50;
-  padding: 0 30px;
+  /* background: #4caf50; */
+  padding: 10px 30px 30px 30px;
 }
 
 .clear {
@@ -61,7 +63,7 @@
 	padding: 15px 15px 20px 70px;
 	margin: 10px 10px 40px -71px;
 	color: white;
-	background-color: #4caf50;
+	background-color: rgba(109, 160, 255,1);
 	text-shadow: 0px 1px 2px #bbb;
 	box-shadow: 0px 2px 4px #888;
 }
@@ -69,3 +71,33 @@
   position: absolute;
   overflow:scroll;
 }
+
+.typingBtn{
+  border: solid 3px white;
+  /* background: rgb(65, 130, 250); */
+  background:rgba(109, 160, 255,1);
+  border-radius: 20px;
+  padding: 12px 45px 8px 45px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,.15),inset 1px 0 15px rgba(190, 196, 255, 0.5);
+  /* font-weight: bold; */
+  font-family: 'Indie Flower', cursive;
+  font-size: 18px;
+  color:white;
+  transition: .2s;
+}
+.typingBtn:focus{
+  outline: none;
+}
+.typingBtn:hover{
+  box-shadow: 2px 4px 8px rgba(0,0,0,.35);
+  letter-spacing: 3px;
+  transition: .1s;
+}
+
+.customBorder{
+  border: solid 1px black;
+}
+.card-min-size{
+  min-width: 510px;
+}
+

@@ -1,0 +1,83 @@
+<h3>Add tasks for exercise</h3>
+
+<button class="btn btn-secondary mt-3 mb-3" onclick={{action 'back'}}>Back</button>
+
+{{#each this.exercise.tasks as |task index|}}
+  <div class="card col-md-12 mb-3">
+    <div class="card-body">
+      <div class="row">
+
+        <!--questions-->
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-8">
+              <select class="form-control" onchange={{action (mut question_id) value="target.value"}}>
+                <option value="" selected>New</option>
+                {{#each items as |item|}}
+                  <option value={{item.id}}>{{item.title}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary" onclick={{action 'addQuestion' task}}>Add question</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-12">
+              {{#each task.questions as |question|}}
+                <div class="card mb-3">
+                  <div class="card-body">
+                    {{item-form item=question displayButton=false submitAction=(action 'saveItem' question)}}
+                    <button class="btn btn-danger" onclick={{action 'deleteQuestion' task question}}>Delete</button>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+        <!--answers-->
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-8">
+              <select class="form-control" onchange={{action (mut answer_id) value="target.value"}}>
+                <option value="" selected>New</option>
+                {{#each items as |item|}}
+                  <option value={{item.id}}>{{item.title}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary" onclick={{action 'addAnswer' task}}>Add answer</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-12">
+              {{#each task.answers as |answer|}}
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div>
+                      {{item-form item=answer displayButton=false submitAction=(action 'saveItem' answer) }}
+                      <button class="btn btn-danger" onclick={{action 'deleteAnswer' task answer}}>Delete</button>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <button class="btn btn-danger" onclick={{action 'deleteTask' task}}>Delete task</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{{/each}}
+
+<button class="btn btn-primary mb-2" onclick={{action 'addTask'}}>Add task</button>
+
+<button class="btn btn-primary" onclick={{action 'saveTasks'}}>Submit</button>

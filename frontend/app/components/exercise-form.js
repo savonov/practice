@@ -1,9 +1,9 @@
 import Component from '@ember/component';
 
 export default Component.extend({
-    actions: {
-        submitAction() {
-            this.submitAction();
-        }
+  actions: {
+    submitAction() {
+      this.submitAction();
     }
+  }
 });

@@ -5,14 +5,11 @@ import {
 
 export default Route.extend({
   model(params) {
-    return this.store.findRecord('exercise', params.id).then(exercise => {
-      return exercise.hasMany('tasks').load().then(() => {
-        return exercise;
-      });
-    })
+    return this.store.findRecord('exercise', params.id);
   },
 
   setupController(controller, model) {
+    console.log(model);
     set(controller, 'exercise', model);
   }
 });

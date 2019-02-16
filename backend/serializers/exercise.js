@@ -10,10 +10,32 @@ module.exports = new JSONAPISerializer('exercises', {
   ],
   tasks: {
     ref: 'id',
-    attributes: ['items'],
-    items: {
+    attributes: [
+      'exercise',
+      'questions',
+      'answers'
+    ],
+    questions: {
       ref: 'id',
-      attributes: ['title', 'value', 'type', 'role']
+      attributes: [
+        'title',
+        'value',
+        'type'
+      ]
+    },
+    answers: {
+      ref: 'id',
+      attributes: [
+        'title',
+        'value',
+        'type'
+      ]
     }
+  },
+  typeForAttribute: (type) => {
+    if (type === 'questions' || type === 'answers') {
+      return 'items';
+    }
+    return undefined;
   }
 });

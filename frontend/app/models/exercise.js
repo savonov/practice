@@ -14,9 +14,8 @@ export default DS.Model.extend({
       return Enum.create(options)
     }
   }),
-  tasks: DS.hasMany('task', {
-    async: true
-  }),
 
-  //fields for sorting
+  tasks: DS.hasMany('task', {
+    async: false
+  })
 });

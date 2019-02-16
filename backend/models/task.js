@@ -1,7 +1,5 @@
 'use strict';
 
-const TaskHasItems = require('./taskhasitems');
-
 module.exports = (sequelize, DataTypes) => {
   const Task = sequelize.define('Task', {
     //
@@ -9,13 +7,18 @@ module.exports = (sequelize, DataTypes) => {
   Task.associate = function (models) {
     Task.belongsTo(models.Exercise, {
       foreignKey: 'exercise_id',
-      as: 'tasks'
+      as: 'exercise'
     });
     Task.belongsToMany(models.Item, {
-      as: 'items',
+      as: 'questions',
       through: models.TaskHasItems,
       foreignKey: 'task_id',
-    })
+    });
+      Task.belongsToMany(models.Item, {
+      as: 'answers',
+      through: models.TaskHasItems,
+      foreignKey: 'task_id',
+    });
   };
   return Task;
 };

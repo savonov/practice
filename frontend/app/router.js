@@ -21,6 +21,9 @@ Router.map(function () {
     this.route('typing', {
       path: 'typing/:id'
     });
+    this.route('tasks', {
+      path: '/:id/tasks'
+    });
   });
 
   this.route('items', function () {

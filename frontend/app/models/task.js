@@ -1,11 +1,17 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  answer_id: DS.attr('number'),
-  task: DS.belongsTo('exercise', {
-    async: true
+  exerciseId: DS.attr('number'),
+
+  exercise: DS.belongsTo('exercise'),
+
+  isModified: DS.attr('boolean'),
+
+  questions: DS.hasMany('item', {
+    async: false
   }),
-  items: DS.hasMany('item', {
-    async: true
-  }),
+
+  answers: DS.hasMany('item', {
+    async: false
+  })
 });

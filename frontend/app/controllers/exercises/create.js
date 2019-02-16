@@ -1,20 +1,15 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
-    actions: {
-        back() {
-            this.exercise.deleteRecord();
-            this.transitionToRoute('exercises');
-        },
+  actions: {
+    back() {
+      this.exercise.deleteRecord();
+      this.transitionToRoute('exercises');
+    },
 
-        createExercise() {
-            this.exercise.save()
-                .then(() => {
-                    this.transitionToRoute('exercises')
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }
+    async createExercise() {
+      let exercise = await this.exercise.save();
+      this.transitionToRoute('exercises.tasks', exercise.id)
     }
+  }
 });

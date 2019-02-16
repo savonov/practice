@@ -1,7 +1,5 @@
 'use strict';
 
-// const TaskHasItems = require('./taskhasitems');
-
 module.exports = (sequelize, DataTypes) => {
   const Item = sequelize.define('Item', {
     title: DataTypes.STRING,

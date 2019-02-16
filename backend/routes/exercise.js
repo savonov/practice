@@ -8,6 +8,5 @@ router.get('/:id', exerciseController.getById);
 router.post('/', exerciseController.add);
 router.patch('/:id', exerciseController.update);
 router.delete('/:id', exerciseController.delete);
-router.post('/add_with_tasks', exerciseController.addWithTasks);
 
 module.exports = router;

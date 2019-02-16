@@ -14,10 +14,4 @@ export default DS.Model.extend({
       return Enum.create(options)
     }
   }),
-
-  taskId: DS.attr('number'),
-
-  role: DS.attr('string'),
-
-  // tasks: DS.hasMany('task')
 });

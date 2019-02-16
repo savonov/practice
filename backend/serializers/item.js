@@ -5,6 +5,10 @@ module.exports = new JSONAPISerializer('items', {
   attributes: [
     'title',
     'value',
-    'type'
+    'type',
+    'tasks'
   ],
+  tasks: {
+    ref: 'id'
+  }
 });

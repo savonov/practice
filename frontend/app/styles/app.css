@@ -172,7 +172,7 @@ td {
 
 canvas {
   position: absolute;
-  width: 220px;
+  width: 200px;
   height: 1000px;
   top: -200px;
 }
@@ -334,7 +334,7 @@ button[disabled] {
   margin: 0 40px;
   position: absolute;
   z-index: 9999;
-  display: none;
+  display: flex;
   justify-content: space-between;
 }
 .feedback > button {

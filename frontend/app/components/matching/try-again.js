@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
-  matchButton: service('match-button'),
+  matchButtons: service('match-button'),
 
   actions: {
     tryAgain(){
@@ -25,11 +25,12 @@ export default Component.extend({
 
       });
 
-      this.matchButton.resetClass()
-      this.matchButton.disableButtons(false);
+      this.matchButtons.resetClass()
+      this.matchButtons.disableButtons(false);
 
-      $('.btn-match').prop('disabled', true);
-
+      this.matchButtons.set('disableSeeAnswers', true)
+      this.matchButtons.set('disableTryAgain', true)
+      this.matchButtons.set('disableCheck', true)
     },
   }
 });

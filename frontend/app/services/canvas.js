@@ -1,9 +1,11 @@
 import Service from '@ember/service';
+import { inject as service } from '@ember/service';
 
 export default Service.extend({
+  matchButtons: service('match-button'),
+
 
   drawLineMatch(arrayOfMatches, color) {
-
     let canvas = document.createElement("canvas");
 
     let questionId = arrayOfMatches[0].from.attr('id');
@@ -38,7 +40,6 @@ export default Service.extend({
     });
 
     $('.active-answer').addClass('conected-answer').removeClass('active-answer');
-
     $('.active-question').addClass('connected-question');
     $('.connected-question').removeClass('active-question').prop('disabled', true);
 
@@ -48,9 +49,9 @@ export default Service.extend({
   },
   checkCountMatches(){
     if ($('canvas').length > 0) {
-      $('.btn-check').prop('disabled', false);
+      this.matchButtons.set('disableCheck', false);
     } else {
-      $('.btn-check').prop('disabled', true);
+      this.matchButtons.set('disableCheck', true);
     }
   },
 });

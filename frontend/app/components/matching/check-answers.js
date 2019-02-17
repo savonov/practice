@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   canvas: service('canvas'),
-  matchButton: service('match-button'),
+  matchButtons: service('match-button'),
   feedbackMessages: service('feedback-messages'),
 
   paintMatches(trueMatches, falseMatches){
@@ -27,29 +27,30 @@ export default Component.extend({
   },
   checkAnswer(trueMatches){
 
-    let tmp = this.matchButton.get('countTryAgainClick') + 1;
-    this.matchButton.set('countTryAgainClick', tmp);
+    let tmp = this.matchButtons.get('countTryAgainClick') + 1;
+    this.matchButtons.set('countTryAgainClick', tmp);
 
     if (trueMatches.length == $('.button-question').length) {
-      this.feedbackMessages.message('Well done!');
-      $('.btn-match').prop('disabled', true);
-      this.matchButton.disableButtons(true);
-      $('.btn-restart').prop('disabled', false);
+      this.feedbackMessages.set('messages', 'Well done!');
+      this.matchButtons.set('disableSeeAnswers', true)
+      this.matchButtons.set('disableTryAgain', true)
+      this.matchButtons.set('disableCheck', true)
+      this.matchButtons.disableButtons(true);
+      this.matchButtons.set('disableRestart', false);
     } else {
 
       if (tmp == 2) {
-
-        $('.btn-seeAnswers').prop('disabled', false);
-          $('.btn-check').prop('disabled', true);
-          this.matchButton.disableButtons(true);
-          this.feedbackMessages.message('Check the correct answers.');
+        this.matchButtons.set('disableSeeAnswers', false)
+        this.matchButtons.set('disableCheck', true);
+        this.matchButtons.disableButtons(true);
+        this.feedbackMessages.set('messages', 'Check the correct answers.');
 
       } else if (tmp < 2) {
 
-          this.feedbackMessages.message('Try again!');
-          this.matchButton.disableButtons(true);
-          $('.btn-check').prop('disabled', true);
-          $('.btn-tryAgain').prop('disabled', false);
+          this.feedbackMessages.set('messages', 'Try again!');
+          this.matchButtons.disableButtons(true);
+          this.matchButtons.set('disableCheck', true);
+          this.matchButtons.set('disableTryAgain', false);
 
       }
 

@@ -3,13 +3,13 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   canvas: service('canvas'),
-  matchButton: service('match-button'),
+  matchButtons: service('match-button'),
 
   actions: {
     seeAnswers(){
       $('canvas').remove();
 
-      this.matchButton.disableButtons(true);
+      this.matchButtons.disableButtons(true);
 
       let arrayOfMatches = [];
 
@@ -35,10 +35,12 @@ export default Component.extend({
 
       this.canvas.drawLineMatch(arrayOfMatches, '#FFE16A');
 
-      $('.btn-match').prop('disabled', true);
-      $('.btn-restart').prop('disabled', false);
+      this.matchButtons.set('disableSeeAnswers', true)
+      this.matchButtons.set('disableTryAgain', true)
+      this.matchButtons.set('disableCheck', true)
+      this.matchButtons.set('disableRestart', false);
 
-      this.matchButton.resetClass();
+      this.matchButtons.resetClass();
     },
 
   }

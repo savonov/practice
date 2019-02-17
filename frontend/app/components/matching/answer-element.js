@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   canvas: service('canvas'),
+  matchButtons: service('match-button'),
 
   addMatch() {
     let activeQuestion = $('.active-question');
@@ -10,7 +11,7 @@ export default Component.extend({
 
     if (activeQuestion.length != 0) {
 
-      let arrayOfMatches = new Array;
+      let arrayOfMatches = [];
 
       arrayOfMatches.push({
           from: activeQuestion,
@@ -20,12 +21,14 @@ export default Component.extend({
       this.canvas.drawLineMatch(arrayOfMatches,  '#DEDEDE');
     }
   },
+
   actions: {
+    //FIXME: jQuery
     selectAnswer(index) {
       $('.button-answer').removeClass('active-answer');
       $(`#${index}`).addClass('active-answer')
 
-    this.addMatch();
+      this.addMatch();
     },
 
     deleteMatch(answerId){
@@ -36,8 +39,8 @@ export default Component.extend({
           $(canvas).remove();
 
           let questionId = $(canvas).data('question');
-          $(`#${questionId}`).prop('disabled', false).removeClass('connected-question');
 
+          $(`#${questionId}`).prop('disabled', false).removeClass('connected-question');
           $(`#${answerId}`).removeClass('conected-answer');
         });
 

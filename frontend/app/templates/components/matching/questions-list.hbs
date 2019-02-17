@@ -1,5 +1,5 @@
 {{#each  (shuffle  exercise.tasks ) as |task|}}
-{{#each (shuffle (filter (action "questionListFilter" task) task.items)) as |item|}}
-  {{matching/question-element item=item}}
+{{#each (shuffle task.questions) as |item|}}
+  {{matching/question-element item=item task_id=task.id task_title=task.title}}
 {{/each}}
 {{/each}}

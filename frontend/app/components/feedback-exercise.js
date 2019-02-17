@@ -1,10 +1,12 @@
 import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
+  feedbackMessages: service('feedback-messages'),
 
   actions: {
     closeFeedback(){
-      $('.feedback').css('display', 'none')
+      this.feedbackMessages.set('messages', undefined)
     }
   }
 });

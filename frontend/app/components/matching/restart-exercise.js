@@ -2,15 +2,15 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
-  matchButton: service('match-button'),
+  matchButtons: service('match-button'),
 
   actions:{
     restart(){
       $('canvas').remove();
-      this.matchButton.disableButtons(false);
-      this.matchButton.resetClass();
-      this.matchButton.set('countTryAgainClick', 0);
-      $('.btn-restart').prop('disabled', true);
+      this.matchButtons.disableButtons(false);
+      this.matchButtons.resetClass();
+      this.matchButtons.set('countTryAgainClick', 0);
+      this.matchButtons.set('disableRestart',true)
     }
   }
 });

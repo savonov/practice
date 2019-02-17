@@ -6,27 +6,35 @@
         {{#each exercise.tasks as |task index|}}
         <div class="col d-flex justify-content-center align-items-center">
           <div class="card" style="width: 18rem;">
-            {{#each task.items as |item|}}
+            {{#each task.questions as |question|}}
 
-            {{#if (eq item.type "image")}}
-            <img src="{{item.value}}" class="card-img-top" alt="Emptiness">
+            {{#if (eq question.type.value "image")}}
+            <img src="{{question.value}}" class="card-img-top" alt="Emptiness">
             {{/if}}
-            {{#if (eq item.type "text")}}
-            {{compute (action "brokeAWord") item.value item.id}}
+            {{#if (eq question.type.value "audio")}}
+            <audio controls preload="true">
+              <source src="{{question.value}}">
+            </audio>
+            {{/if}}
+
+            {{#each task.answers as |answer|}}
+            {{#if (eq answer.type.value "text")}}
+            {{compute (action "brokeAWord") answer.value answer.id task.id}}
             <div class="card-body text-center">
               <span class="begin">{{get (get begin index) "text"}}</span>
-              {{input value=(mut (get answers item.id)) maxlength="1" class="emptyPart answer {{item.id}}-answer"
+              {{input value=(mut (get answers answer.id)) maxlength="1" class="emptyPart answer"
               key-press=(action "lolObserver") }}
               <span>{{get (get end index) "text"}}</span>
               {{!-- response --}}
+
               {{#each right as |_right|}}
-              {{#if (eq (get _right "id") item.id) }}
+              {{#if (eq _right.task_id task.id) }}
               <span class="normalize-icon float-right response">{{material-icon
               "done" class="text-success"}}</span>
               {{/if}}
               {{/each}}
               {{#each wrong as |_wrong|}}
-              {{#if (eq (get _wrong "id") item.id)}}
+              {{#if (eq _wrong.task_id task.id)}}
               <span class="normalize-icon float-right response">{{material-icon
               "close" class="text-danger"}}</span>
               {{/if}}
@@ -34,11 +42,8 @@
               {{!-- response end --}}
             </div>
             {{/if}}
-            {{#if (eq item.type "audio")}}
-            <audio controls preload="true">
-              <source src="{{item.value}}">
-            </audio>
-            {{/if}}
+            {{/each}}
+
             {{/each}}
           </div>
         </div>
@@ -55,3 +60,22 @@
     </div>
   </div>
 </div>
+{{#if (eq done true)}}
+<div class="row align-items-center congratulations">
+  <div class="col d-flex justify-content-center align-items-center">
+    <div class="div cng-control-panel">
+      <h1>Congratulations</h1>
+      <div class="row text-center">
+        <div class="col form-group">
+          {{#link-to "exercises" invokeAction=(action 'fullClear') class="btn btn-success"}}
+          Exercises
+          {{/link-to}}
+        </div>
+        <div class="col form-group">
+          <button class="btn btn-warning" onclick={{action "clear"}}>Retry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}

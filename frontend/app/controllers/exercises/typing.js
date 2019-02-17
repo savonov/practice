@@ -7,12 +7,20 @@ export default Controller.extend({
   DefinitalyRightAnswers: [],
   begin: [],
   end: [],
+  done: false,
   actions: {
     clear() {
       this.set("right", []);
       this.set("wrong", []);
       this.set("answers", []);
+      this.set("done", false);
       console.clear();
+    },
+    fullClear() {
+      clear();
+      this.set("begin", []);
+      this.set("end", []);
+      this.set("DefinitalyRightAnswers", []);
     },
     check() {
       this.set("right", []);
@@ -28,14 +36,16 @@ export default Controller.extend({
               if (answer == check.text) {
                 let r = {
                   id: index,
-                  text: answer
+                  text: answer,
+                  task_id: check.task_id
                 };
                 right.push(r);
                 this.set("right", right);
               } else {
                 let w = {
                   id: index,
-                  text: answer
+                  text: answer,
+                  task_id: check.task_id
                 };
                 wrong.push(w);
                 this.set("wrong", wrong);
@@ -43,11 +53,19 @@ export default Controller.extend({
           }
         });
       });
-
+      if (
+        this.get("right").length === this.get("DefinitalyRightAnswers").length
+      ) {
+        this.set("done", true);
+      } else {
+        this.set("done", false);
+      }
       console.log("Right: ", this.get("right"));
       console.log("Wrong: ", this.get("wrong"));
     },
-    brokeAWord: function(word, id) {
+    brokeAWord: function(word, id, task_id) {
+      console.log("task_id: ", task_id);
+
       let spaceWidth = 1;
       // this controller is working with only one letter
       let word_length = word.length;
@@ -69,15 +87,18 @@ export default Controller.extend({
       // Creating objects for comparing
       let bg = {
         id: id,
-        text: beginning
+        text: beginning,
+        task_id: task_id
       };
       let ed = {
         id: id,
-        text: end
+        text: end,
+        task_id: task_id
       };
       let dra = {
         id: id,
-        text: space
+        text: space,
+        task_id: task_id
       };
       let _begin = this.get("begin");
       let _end = this.get("end");

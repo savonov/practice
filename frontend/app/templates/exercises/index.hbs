@@ -26,7 +26,7 @@
             {{moment-format exercise.created_at 'LL'}}
 
           </p>
-          {{#if (eq exercise.type.value "texting")}}
+          {{#if (eq exercise.type.value "typing")}}
         {{#link-to "exercises.typing" exercise.id class="playLink"}}PLAY{{/link-to}}
         {{else}}
         {{#link-to "exercises.matching" exercise.id class="playLink"}}PLAY{{/link-to}}

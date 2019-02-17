@@ -5,7 +5,7 @@ export default Component.extend({
   type: "null",
   typing: true,
   matching: true,
-  filterParams: ["matching", "texting"],
+  filterParams: ["matching", "typing"],
 
   init() {
     this._super(...arguments);
@@ -43,11 +43,11 @@ export default Component.extend({
 
       if (double == 0) {
         if (param == "matching") this.set("matching", true);
-        if (param == "texting") this.set("typing", true);
+        if (param == "typing") this.set("typing", true);
         filterParams.pushObject(param);
       } else {
         if (param == "matching") this.set("matching", false);
-        if (param == "texting") this.set("typing", false);
+        if (param == "typing") this.set("typing", false);
         filterParams.removeObject(param);
       }
       this.set("filterParams", filterParams);

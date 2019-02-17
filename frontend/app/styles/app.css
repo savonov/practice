@@ -2,16 +2,37 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #e6e6e6;
+  background-color: #f0f0f0;
 }
 
 header {
-  background-color: #282C34;
+  background: rgba(32, 166, 231, 0.8)
+    linear-gradient(180deg, #20a8e9, rgba(30, 158, 220, 0.5)) repeat-x;
   color: #383838;
+}
+.bg-custom-blue {
 }
 
 .bg-dark {
-  background-color: #282C34 !important;
+  /* background-color: #282C34 !important; */
+}
+
+.add-item-btn {
+  display: block;
+  text-align: center;
+  background: #4caf50;
+  padding: 15px 0;
+  text-decoration: none;
+  border-radius: 20px;
+  color:white;
+  transition: .3s;
+}
+.add-item-btn:hover{
+text-decoration: none;
+color:white;
+background: #5ac25d;
+border-radius: 10px;
+transition:.1s;
 }
 
 .top-container {
@@ -21,7 +42,7 @@ header {
   font-weight: bold;
 }
 
-.top-container>h2 {
+.top-container > h2 {
   margin: 30px;
 }
 
@@ -40,7 +61,7 @@ main {
 
 .btn-secondary {
   color: white;
-  background-color: #282C34;
+  background-color: #282c34;
 }
 
 .block {
@@ -69,10 +90,10 @@ main {
   align-items: center;
   width: 113%;
 }
-.card-block-answer{
+.card-block-answer {
   margin-left: -20%;
 }
-.card-block>button {
+.card-block > button {
   height: 50px;
   width: 50px;
 }
@@ -87,7 +108,7 @@ main {
   justify-content: space-between;
 }
 
-.col-lg-4{
+.col-lg-4 {
   /* padding: 0;
   margin: 0; */
 }
@@ -124,7 +145,7 @@ td {
   text-transform: uppercase;
 }
 
-.block>p {
+.block > p {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -137,35 +158,35 @@ td {
   cursor: pointer;
 }
 
-.active-question{
+.active-question {
   background-color: green;
 }
 
-.active-answer{
+.active-answer {
   background-color: blue;
 }
 
-.line{
+.line {
   background-color: yellow;
 }
 
-canvas{
+canvas {
   position: absolute;
   width: 220px;
   height: 1000px;
   top: -200px;
 }
 
-img.card-question{
+img.card-question {
   height: 94px;
   width: 159px;
 }
 
-.col-lg-8{
+.col-lg-8 {
   /* padding: 0; */
 }
 
-.button-question{
+.button-question {
   background-color: white;
   border: none;
   outline: none;
@@ -176,7 +197,7 @@ img.card-question{
   z-index: 10;
 }
 
-.button-answer{
+.button-answer {
   background-color: white;
   border: none;
   outline: none;
@@ -187,7 +208,7 @@ img.card-question{
   z-index: 10;
 }
 
-.conected-answer{
+.conected-answer {
   background-color: white;
   border: none;
   outline: none;
@@ -209,7 +230,7 @@ img.card-question{
   z-index: 10;
 }
 
-.connected-question{
+.connected-question {
   background-color: white;
   border: none;
   outline: none;
@@ -220,7 +241,7 @@ img.card-question{
   z-index: 10;
 }
 
-.btn-match{
+.btn-match {
   background-color: white;
   border: none;
   outline: none;
@@ -234,26 +255,25 @@ img.card-question{
   z-index: 99;
 }
 
-.card-answer{
+.card-answer {
   text-align: left;
   width: 75%;
 }
 
-.matching-block{
+.matching-block {
   background-color: white;
   width: 800px;
   margin: 0 auto;
   padding: 30px 0;
 }
 
-
-.top-block{
+.top-block {
   display: flex;
   justify-content: space-between;
   padding: 10px 50px;
 }
 
-.btn-restart{
+.btn-restart {
   background-color: white;
   border: none;
   outline: none;
@@ -264,14 +284,13 @@ img.card-question{
   z-index: 10;
 }
 
-
 button:disabled,
-button[disabled]{
+button[disabled] {
   color: #ffffff;
-  opacity: .4;
+  opacity: 0.4;
 }
 
-.match-false{
+.match-false {
   background-color: white;
   border: none;
   outline: none;
@@ -282,7 +301,7 @@ button[disabled]{
   z-index: 10;
 }
 
-.match-true{
+.match-true {
   background-color: white;
   border: none;
   outline: none;
@@ -296,20 +315,20 @@ button[disabled]{
 .button-question:disabled,
 .button-question[disabled],
 .button-answer:disabled,
-.button-answer[disabled]{
+.button-answer[disabled] {
   opacity: 1;
 }
 
-#test{
+#test {
   height: 200px;
   width: 200px;
 
   background-color: blue;
 }
 
-.feedback{
+.feedback {
   width: 730px;
-  background-color: #A7DCF7;
+  background-color: #a7dcf7;
   border-radius: 5px;
   padding: 13px;
   margin: 0 40px;
@@ -317,15 +336,14 @@ button[disabled]{
   z-index: 9999;
   display: none;
   justify-content: space-between;
-
 }
-.feedback>button{
-  background-color: #A7DCF7;
+.feedback > button {
+  background-color: #a7dcf7;
   border: none;
   margin-top: -5px;
-  margin-right: -10px
+  margin-right: -10px;
 }
 
-.feedback>h5{
+.feedback > h5 {
   margin-top: 14px;
 }

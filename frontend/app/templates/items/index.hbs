@@ -1,18 +1,22 @@
-{{#link-to "items.create" class="btn btn-secondary"}}ADD ITEM{{/link-to}}
-<br><br>
+<div class="row justify-content-center">
+  <div class="col-sm-4">
+    {{#link-to "items.create" class="add-item-btn"}}ADD ITEM{{/link-to}}
+  </div>
+</div>
+<br>
 <div class="card ">
   <div class="card-body">
     <table class="table">
       <thead>
-      <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>Type</th>
-        <th>Actions</th>
-      </tr>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
       </thead>
       <tbody>
-      {{#each items as |item|}}
+        {{#each items as |item|}}
         <tr>
           <th>{{item.id}}</th>
           <td>{{item.title}}</td>
@@ -23,7 +27,7 @@
             <button class="btn-link" onclick={{action "delete" item}}>{{material-icon "delete"}}</button>
           </td>
         </tr>
-      {{/each}}
+        {{/each}}
       </tbody>
     </table>
   </div>

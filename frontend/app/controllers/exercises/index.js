@@ -53,20 +53,6 @@ export default Controller.extend({
             return { query: param, results: list };
           }
         });
-
-        // });
-
-        // return this.store.query("exercise", { type: "matching" }).then(list=>{
-        if (_sort != "") {
-          console.log("Sorting+filter");
-          this.set("exercises", list);
-          this.set("sortParam", [_sort]);
-          let sortedExercises = this.get("sortedExercises");
-          return { query: param, results: sortedExercises };
-        } else {
-          return { query: param, results: list };
-        }
-        // });
       } else {
         return this.store.findAll("exercise").then(results => {
           if (_sort) {

@@ -8,12 +8,13 @@ const app = express();
 
 app.use(cors());
 
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 
 const indexRouter = require('./routes/index');
 const taskRouter = require('./routes/task');
 const exerciseRouter = require('./routes/exercise');
 const itemRouter = require('./routes/item');
+const fileRouter = require('./routes/file');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,9 +23,10 @@ app.get('/api/', indexRouter);
 app.use('/api/tasks', taskRouter);
 app.use('/api/exercises', exerciseRouter);
 app.use('/api/items', itemRouter);
+app.use('/api/file', fileRouter);
 
 app.use(function (req, res, next) {
-    next(createError(404));
+  next(createError(404));
 });
 
 module.exports = app;

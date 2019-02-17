@@ -23,26 +23,27 @@
 {{#if this.item.type.isImage}}
   <div class="form-group">
     <label>Image</label>
-    {{input class="form-control" value=this.item.value}}
+    {{#if item.value}}
+      <img width="300px" height="300px" class="d-block mx-auto mb-2" src={{item.value}}>
+    {{else}}
+      {{file-uploader accept="image/*" btnClass="btn btn-success text-white" item=this.item}}
+    {{/if}}
   </div>
-
-  <!--<div class="form-group">-->
-  <!--<div class="custom-file">-->
-  <!--<label for="valueItem">Image</label>-->
-  <!--<input type="file" class="custom-file-input" id="valueItem">-->
-  <!--<label class="custom-file-label" for="valueItem">Choose file</label>-->
-  <!--</div>-->
-  <!--</div>-->
-
 {{/if}}
 
 {{#if this.item.type.isAudio}}
   <div class="form-group">
     <label>Audio</label>
-    {{input class="form-control" value=this.item.value}}
+    {{#if item.value}}
+      <audio class="d-block mb-2 col-md-12" controls preload="true">
+        <source src="{{item.value}}">
+      </audio>
+    {{else}}
+      {{file-uploader accept="audio/*" btnClass="btn btn-success text-white" item=this.item}}
+    {{/if}}
   </div>
 {{/if}}
 
-{{#if this.displayButton}}
+{{#if displayButton}}
   <button class="btn btn-primary" onclick={{action 'submitAction'}}>Submit</button>
 {{/if}}

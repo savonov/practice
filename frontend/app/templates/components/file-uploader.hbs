@@ -1,0 +1,11 @@
+{{#file-upload name="file"
+               accept=this.accept
+               onfileadd=(action "upload") as |queue|}}
+  <a class={{btnClass}}>
+    {{#if queue.files.length}}
+      {{queue.files.[0].name}} is uploading...
+    {{else}}
+      Upload file
+    {{/if}}
+  </a>
+{{/file-upload}}
